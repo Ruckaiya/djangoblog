@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href=" {% static 'style.css' %} ">
+    <title>Blog | Firoze Alam</title>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h2 class="logo-text"><span>Firoze Writes</span></h2>
+            <h6>AN AWAKENED PSYCHE'S BLOG</h6>
+        </div>
+        <i class="fa fa-bars menu-toggle"></i>
+        <nav>
+            <ul class="nav">
+                <li><a href="">HOME</a></li>
+                <li><a href="">PROJECTS</a></li>
+                <li><a href="">LET'S CONNECT</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="page-wrapper">
+        <div class="post-slider">
+            <h1 class="slider-title fancy"><span>LATEST ARTICLES</span></h1>
+            <i class="fas fa-chevron-left prev"></i>
+            <i class="fas fa-chevron-right next"></i>
+            <div class="post-wrapper">
+
+            {% for latest in latestposts.all %}
+            <div class="post">
+                <img src="{{latest.post_image.url}}" alt="" class="slider-image">
+                <div class="post-info">
+                    <h4><a href="article.html">{{latest.title}}</a>
+                    <br><i class="far fa-calendar" > {{latest.timestamp}}</i>
+                    </h4>
+                </div>
+            </div>
+            {% endfor %}
+
+    </div>
+    </div>
+
+
+    <div class="content clearfix">
+    <div class="main-content">
+        {% for newpost in newposts.all %}
+        <div class="wrapper">
+            <div class="box a">
+                <h1>{{newpost.title}}</h1>
+                <p>{{newpost.overview}}
+                <div class="line"></div>
+                {{newpost.author}} &nbsp; in {{newpost.categories}} &nbsp; .{{newpost.reading_time}}<br>
+                 {{newpost.timestamp}}
+            </div>
+            <div class="box f">
+                <img src="{{newpost.post_image.url}}" alt="">
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="sidebar">
+    <section class=" section recent-posts-container">
+        <h3 class="subtitle fancy"><span>Older Posts</span></h3>
+        {% for popular in populars.all %}
+        <article class="recent-post">
+          <img class="recent-card-img" src="{{popular.post_image.url}}" alt="">
+          <div class="recent-posts-info">
+            <time class="article-date" datetime="2015-06-14"> {{popular.timestamp}} <br>
+            </time> <a href="#0" class="recent-posts-link">{{popular.title}}</a>
+          </div>
+        </article>
+        {% endfor %}
+    </section>
+
+  <div class="section search">
+    <form class="search-form">
+        <span class="search-text">find more</span>
+        <input type="text" class="search-box" placeholder="Search the blog....." required>
+        <button type="submit" class="button">
+            <span class="search-row">send</span>
+        </button>
+    </form>
+</div>
+        <div class="section topics">
+            <h3 class="subtitle fancy"><span>Categories</span></h3>
+            <ul>
+                <li><a href="">social psychology</a></li>
+                <li><a href="">work, education & career</a></li>
+                <li><a href="">ed tech & data science</a></li>
+                <li><a href="youth">youth, culture & society</a></li>
+                <li><a href="">diversity & inclusion</a></li>
+                <li><a href="">faith, religion, & spirituality</a></li>
+            </ul>
+        </div>
+
+        <div class="section tags">
+            <h3 class="subtitle fancy"><span>Tags</span></h3>
+            <div class="category" style="overflow: hidden;">
+            <a href="">#psychology</a>
+            <a href="">#at work</a>
+            <a href="">#ed tech</a>
+            <a href="">#data science</a>
+            <a href="">#diversity</a>
+            <a href="">#career</a>
+            <a href="">#social media</a>
+            <a href="">#religion</a>
+            <a href="">#technology</a>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+
+    <div class="footer">
+        <div class="footer-content">
+            <div class="footer-section about">
+
+                <h4>About Me</h4>
+                <p class="about-me">Hi! I'm Firoze. This is a place where I share my heart
+                    out. What started out as a passion has now become a way of life for me.
+                    Come experience my life with me & let me inspire you. This is where I can be authentically and unaplogetically me.
+                </p>
+                <div class="contact">
+                    <span><i class="fas fa-phone"></i> &nbsp; 416-807-0176</span>
+                    <span><i class="fas fa-envelope"></i> &nbsp; m.firoze.alam@gmail.com</span>
+                </div>
+                <div class="socials">
+                    <a href=""><i class="fab fa-linkedin"></i></a>
+                    <a href=""><i class="fab fa-medium"></i></a>
+                    <a href=""><i class="fab fa-google-plus"></i></a>
+                    <a href=""><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-section links">
+                <h4 style="margin-left: 20px;">Quick Links</h4>
+
+                <ul>
+                    <li><a href="">For Collaborations</a></li>
+                    <li><a href="">Speaking & Writing Engagements</a></li>
+                    <li><a href="">Share your story</a></li>
+                </ul>
+            </div>
+            <div class="footer-section contact-form">
+                <form action="index.html">
+                    <h4>Contact</h4>
+                    <input type="email" class="text-input contact-input" placeholder="Your email address....">
+                    <textarea name="message" class="text-input contact-input" placeholder="Your message...."> </textarea>
+                    <button type="submit" class="btn btn-big contact-btn"><i class="fas fa-envelope"></i> &nbsp; Send</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2019 | Made with <i class="fas fa-heart" aria-label="love"></i> by Ruckaiya
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+    <script src=" {% static 'script.js' %}"></script>
+
+</body>
+</html>
